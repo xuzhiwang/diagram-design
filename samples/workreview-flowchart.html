@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorkReview · Flowchart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-paper:   #f5f5f5;
+      --color-ink:     #2d3142;
+      --color-muted:   #4f5d75;
+      --color-accent:  #eb6c36;
+      --font-sans:     'Geist', system-ui, sans-serif;
+      --font-serif:    'Instrument Serif', serif;
+      --font-mono:     'Geist Mono', ui-monospace, monospace;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper);
+      color: var(--color-ink);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+    }
+
+    .frame { max-width: 1200px; width: 100%; }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.4vw + 0.75rem, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--color-ink);
+      margin-bottom: 1.5rem;
+    }
+
+    svg { width: 100%; min-width: 900px; display: block; }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Flowchart · Diagram Design</p>
+    <h1>C++ review loop</h1>
+
+    <svg viewBox="0 0 1000 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="workreview-flowchart-title workreview-flowchart-desc">
+      <title id="workreview-flowchart-title">C++ review loop</title>
+      <desc id="workreview-flowchart-desc">Sparse flowchart for a C++ code-review loop: open a PR, compile, run static checks, human review, then merge or fix and loop back.</desc>
+      <defs>
+        <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+          <circle cx="1" cy="1" r="0.9" fill="rgba(45,49,66,0.10)"/>
+        </pattern>
+        <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#4f5d75"/></marker>
+        <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#eb6c36"/></marker>
+      </defs>
+
+      <rect width="100%" height="100%" fill="#f5f5f5"/>
+      <rect width="100%" height="100%" fill="url(#dots)" opacity="0.55"/>
+
+      <!-- Spine + branches -->
+      <line x1="500" y1="88" x2="500" y2="104" stroke="#4f5d75" stroke-width="1.2"/>
+      <line x1="500" y1="104" x2="500" y2="120" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#arrow)"/>
+      <line x1="500" y1="168" x2="500" y2="200" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#arrow)"/>
+      <line x1="500" y1="248" x2="500" y2="280" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#arrow)"/>
+      <line x1="600" y1="328" x2="720" y2="328" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#arrow)"/>
+      <!-- Fix reloop: offset right of spine, enter merge from the right -->
+      <path d="M 800,352 V 400 Q 800,408 792,408 H 560 Q 552,408 552,400 V 112 Q 552,104 544,104 H 500"
+            fill="none" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#arrow)"/>
+      <line x1="500" y1="376" x2="500" y2="416" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#arrow)"/>
+      <line x1="500" y1="464" x2="500" y2="496" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#arrow)"/>
+      <!-- Approve NO enters Fix from the right edge -->
+      <path d="M 600,544 H 848 Q 856,544 856,536 V 336 Q 856,328 848,328 H 880"
+            fill="none" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#arrow)"/>
+      <line x1="500" y1="592" x2="500" y2="624" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arrow-accent)"/>
+
+      <!-- Labels -->
+      <rect x="644" y="318" width="24" height="12" rx="2" fill="#f5f5f5"/>
+      <text x="656" y="327" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.12em">NO</text>
+
+      <rect x="484" y="386" width="32" height="12" rx="2" fill="#f5f5f5"/>
+      <text x="500" y="395" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.12em">YES</text>
+
+      <rect x="644" y="534" width="24" height="12" rx="2" fill="#f5f5f5"/>
+      <text x="656" y="543" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.12em">NO</text>
+
+      <rect x="484" y="598" width="32" height="12" rx="2" fill="#f5f5f5"/>
+      <text x="500" y="607" fill="#eb6c36" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.12em">YES</text>
+
+      <rect x="564" y="248" width="48" height="12" rx="2" fill="#f5f5f5"/>
+      <text x="588" y="257" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">RELOOP</text>
+
+      <!-- Start -->
+      <rect x="420" y="40" width="160" height="48" rx="24" fill="rgba(45,49,66,0.03)" stroke="rgba(45,49,66,0.30)" stroke-width="1"/>
+      <text x="500" y="62" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Clone / open PR</text>
+      <text x="500" y="76" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">WorkReview</text>
+
+      <!-- Merge point -->
+      <circle cx="500" cy="104" r="4" fill="#2d3142"/>
+
+      <!-- Compile -->
+      <rect x="420" y="120" width="160" height="48" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="500" y="148" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Compile</text>
+
+      <!-- Static checks -->
+      <rect x="420" y="200" width="160" height="48" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="500" y="228" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Static checks</text>
+
+      <!-- Decision: clean? -->
+      <polygon points="500,280 600,328 500,376 400,328" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="500" y="324" fill="#2d3142" font-size="11" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Build + lint</text>
+      <text x="500" y="340" fill="#2d3142" font-size="11" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">clean?</text>
+
+      <!-- Fix -->
+      <rect x="720" y="304" width="160" height="48" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="800" y="332" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Fix code</text>
+
+      <!-- Human review -->
+      <rect x="420" y="416" width="160" height="48" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="500" y="444" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Human review</text>
+
+      <!-- Decision: approve? -->
+      <polygon points="500,496 600,544 500,592 400,544" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="500" y="540" fill="#2d3142" font-size="11" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Approve</text>
+      <text x="500" y="556" fill="#2d3142" font-size="11" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">merge?</text>
+
+      <!-- End: Merge -->
+      <rect x="420" y="624" width="160" height="48" rx="24" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1"/>
+      <text x="500" y="652" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Merge</text>
+
+      <!-- Legend -->
+      <line x1="40" y1="696" x2="960" y2="696" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"/>
+      <text x="40" y="712" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.18em">LEGEND · SHAPE CARRIES TYPE</text>
+
+      <rect x="40" y="728" width="24" height="12" rx="6" fill="rgba(45,49,66,0.03)" stroke="rgba(45,49,66,0.30)" stroke-width="1"/>
+      <text x="72" y="738" fill="#4f5d75" font-size="8.5" font-family="'Geist', sans-serif">Start / end</text>
+
+      <rect x="180" y="728" width="24" height="12" rx="2" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="212" y="738" fill="#4f5d75" font-size="8.5" font-family="'Geist', sans-serif">Step</text>
+
+      <polygon points="300,734 312,728 324,734 312,740" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="336" y="738" fill="#4f5d75" font-size="8.5" font-family="'Geist', sans-serif">Decision</text>
+
+      <circle cx="440" cy="734" r="4" fill="#2d3142"/>
+      <text x="452" y="738" fill="#4f5d75" font-size="8.5" font-family="'Geist', sans-serif">Merge point</text>
+
+      <line x1="560" y1="736" x2="588" y2="736" stroke="#eb6c36" stroke-width="1.4" marker-end="url(#arrow-accent)"/>
+      <text x="596" y="738" fill="#4f5d75" font-size="8.5" font-family="'Geist', sans-serif">Happy path</text>
+
+      <line x1="720" y1="736" x2="748" y2="736" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#arrow)"/>
+      <text x="756" y="738" fill="#4f5d75" font-size="8.5" font-family="'Geist', sans-serif">Branch / reloop</text>
+    </svg>
+  </div>
+</body>
+</html>
